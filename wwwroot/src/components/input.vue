@@ -1,17 +1,23 @@
 <template>
 	<h3>here is a test input</h3>
-	<input type="text" class="input" v-on:input="check" placeholder="请输入..." >
+	<input type="text" class="input" v-on:input="check" v-model="msg" placeholder="请输入..." >
 	<span class="input-msg">{{notice}}</span>
+	<p>{{msg}}</p>
 	<slot></slot>
 	<slot name="a"></slot>
 </template>
 
 <script>
 	module.exports = {
-		props: ['rules'],
+		props: {
+			rules:{
+				type: String // 制定传递参数类型
+			}
+		},
 		data: function data() {
 	        return {
 	            notice: "",
+	            msg: "",
 	            test: {
 	            	digital: [/^[\d\.]+$/, '请输入纯数字']
 	            }
@@ -27,12 +33,12 @@
 	    				var rule = val.split(":");
 	    				if(rule[0] == 'min'){
 	    					if(textLength < rule[1]){
-	    						this.notice = '字数最多不得少于'+rule[1]+'个字！';
+	    						this.notice = '字数不得少于'+rule[1]+'个字！';
 	    						return false
 	    					}
 	    				}else if(rule[0] == 'max'){
 	    					if(textLength > rule[1]){
-	    						this.notice = '字数最多不得超过'+rule[1]+'个字！';
+	    						this.notice = '字数不得超过'+rule[1]+'个字！';
 	    						return false
 	    					}
 	    				}
@@ -41,14 +47,13 @@
 	    					if(!this.test[val][0].test(text)){
 	    						this.notice = this.test[val][1]
 	    						return false
-	    					}else{
-	    						this.notice = "√"
 	    					}
 	    				}else{
 	    					throw "input组件没有该规则 "+val
 	    					return false
 	    				}
 	    			}
+	    			this.notice = "√"
 	    			return true
 	    		}.bind(this))
 	    	}

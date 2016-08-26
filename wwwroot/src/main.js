@@ -1,6 +1,5 @@
 var Vue = require('vue')
 Vue.config.debug = true;
-require('./components/input.vue')
 
 var app = new Vue({
   el: '#app',
