@@ -2,19 +2,25 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport">
 	<title>test</title>
+	<style>
+		*{margin:0;padding: 0;}
+	</style>
 </head>
 <body>
-	<h3>test 22 33</h3>
 	<div id="app">
-		<p>{{views}}</p>
+		<h2>表单验证组件</h2>
+		<br>
 		<component :is="views" rules="min:2;max:5;digital" ></component>
+		<br>	
 		<component :is="views" rules="min:5;max:10" ></component>
-
-		<!-- <my-input  ></my-input>
-		<my-input>
-			<p slot="a">hahaha11 </p>
-		</my-input> -->
+		<br>
+		<h2>省市县三级联动组件</h2>
+		<br>
+		<my-select></my-select>
+		<br>	
+		<my-select></my-select>
 	</div>
 	
 	<script src="build/build.js"></script>

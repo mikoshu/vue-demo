@@ -1,5 +1,5 @@
 var Vue = require('vue')
-Vue.config.debug = true;
+//Vue.config.debug = true;
 
 var app = new Vue({
   el: '#app',
@@ -7,6 +7,7 @@ var app = new Vue({
     views: 'my-input'
   },
   components: {
-    'my-input': require('./components/input.vue')
+    'my-input': require('./components/input.vue'),
+    'my-select': require('./components/selectArea.vue')
   }
 })

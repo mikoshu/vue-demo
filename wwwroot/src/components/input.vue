@@ -1,5 +1,5 @@
 <template>
-	<h3>here is a test input</h3>
+	<span>名称：</span>
 	<input type="text" class="input" v-on:input="check" v-model="msg" placeholder="请输入..." >
 	<span class="input-msg">{{notice}}</span>
 	<p>{{msg}}</p>
