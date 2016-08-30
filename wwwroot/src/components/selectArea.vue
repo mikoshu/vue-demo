@@ -1,4 +1,8 @@
 <style lang="sass">
+	body{
+	 -webkit-overflow-scrolling: touch; // 解决局部滚动滞涩
+	}
+
 	.my-select{
 		color:#333;
 		span{
@@ -57,7 +61,7 @@
 			}
 			ul{
 				height: calc(100% - 40px);
-				overflow-y: scroll;
+				overflow: auto;
 				li{
 					line-height: 40px;
 					text-align: center;
@@ -70,7 +74,7 @@
 </style>
 
 <template>
-	<div class="my-select" v-on:click="showPop" >
+	<div class="my-select" v-on:click="showPop" v-on:touchStart="showPop" >
 		位置：
 		<span>{{province}}</span>
 		&gt;
@@ -78,14 +82,14 @@
 		&gt;
 		<span>{{district}}</span>
 	</div>
-	<div class="area-cover" v-if="show" transition="expand" >
-		<div class="pop" v-if="show" transition="show-pop"  >
+	<div class="area-cover" v-if="show" transition="expand" v-on:click="closePop" >
+		<div class="pop" v-if="show" transition="show-pop" v-on:click.stop  >
 			<div class="title">
 				选择地区
-				<a href="javascript:;" v-on:click="closePop">关闭</a>
+				<a href="javascript:;" v-on:click="closePop" v-on:touchStart="closePop" >关闭</a>
 			</div>
 			<ul v-el:scroll>
-				<li v-for="(index, item) in area" v-on:click="mySelect" data-index="{{index}}" >{{item}}</li>
+				<li v-for="(index, item) in area" v-on:click="mySelect"  data-index="{{index}}" >{{item}}</li>
 			</ul>
 		</div>
 	</div>
