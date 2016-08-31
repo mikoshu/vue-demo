@@ -99,7 +99,6 @@
 <script>
 	var area = require('./area.js')
 	module.exports = {
-		
 		data: function(){
 			return {
 				area : area.province,
