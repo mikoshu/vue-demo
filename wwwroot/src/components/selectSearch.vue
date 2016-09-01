@@ -107,13 +107,12 @@
 				this.scrollTop = this.$els.list.scrollTop;
 				this.isChoose = true;
 				this.classIndex = e.target.getAttribute("data-index");
-				console.log(this.classIndex)
 			},
 			search: function(e){ // 触发input事件 将匹配的list内容放到顶部
 				var text = e.target.value;
 				this.scrollTop = 0;
 				this.$els.list.scrollTop = 0;
-				this.mockData.sort(function(pre,next){
+				this.mockData.sort(function(pre,next){ // 匹配排序
 					if(!!~pre.title.indexOf(text)){
 						return -1
 					}
